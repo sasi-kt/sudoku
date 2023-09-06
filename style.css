@@ -1,0 +1,31 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+.sudoku-board {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.sudoku-row {
+    display: flex;
+}
+
+.sudoku-cell {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-size: 20px;
+    border: 1px solid #999;
+}
+
+#solve-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+}

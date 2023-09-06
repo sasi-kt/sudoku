@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sudoku Solver</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Sudoku Solver</h1>
+    <div class="sudoku-board">
+        {% for row in board %}
+        <div class="sudoku-row">
+            {% for cell in row %}
+            <input type="number" class="sudoku-cell" value="{{ cell }}" readonly>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+    <button id="solve-btn">Solve</button>
+
+    <script>
+        document.getElementById('solve-btn').addEventListener('click', () => {
+            const board = [];
+            document.querySelectorAll('.sudoku-cell').forEach(cell => {
+                board.push(parseInt(cell.value) || 0);
+            });
+
+            fetch('/solve', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ board: board }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.solved_board) {
+                    const cells = document.querySelectorAll('.sudoku-cell');
+                    data.solved_board.forEach((value, index) => {
+                        cells[index].value = value;
+                    });
+                } else {
+                    alert('Unable to solve the Sudoku puzzle.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
