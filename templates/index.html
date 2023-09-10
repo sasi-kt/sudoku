@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sudoku Solver</title>
+    <title>Sudoku</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Sudoku Solver</h1>
+    <h1>Sudoku</h1>
     <div class="sudoku-board">
         {% for row in board %}
         <div class="sudoku-row">
             {% for cell in row %}
-            <input type="number" class="sudoku-cell" value="{{ cell }}" readonly>
+            <input type="number" class="sudoku-cell" value="{{ cell }}" >
             {% endfor %}
         </div>
         {% endfor %}
