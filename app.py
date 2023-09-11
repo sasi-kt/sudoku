@@ -61,22 +61,10 @@ while True:
 def index():
     return render_template('index.html', board=sudoku_board)
 
-@app.route('/solve', methods=['POST'])
+@app.route('/check', methods=['POST'])
 def check():
-    # Get the Sudoku board from the frontend
-    user_board = request.json['board']
-
-    # Check for errors by comparing the user's board with the solved board
-    errors = []
-    for i in range(9):
-        for j in range(9):
-            if user_board[i][j] != solved_board[i][j]:
-                errors.append({'row': i, 'col': j})
-
-    if len(errors) == 0:
-        return jsonify({'message': 'Congratulations! Sudoku is solved correctly.'})
-    else:
-        return jsonify({'errors': errors})
+    # Call the Sudoku solver function (implement this)
+    return jsonify({'solved_board': solved_board})
 
 if __name__ == '__main__':
     app.run(debug=True)
