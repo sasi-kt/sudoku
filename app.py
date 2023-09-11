@@ -22,7 +22,7 @@ sudoku_board = [ [nums[pattern(r,c)] for c in cols] for r in rows ]
 squares = side*side
 empties = squares * 3//4
 for p in sample(range(squares),empties):
-    sudoku_board[p//side][p%side] = 0
+    sudoku_board[p//side][p%side] = None
 
 @app.route('/')
 def index():

@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+               -webkit-appearance: none;
+                margin: 0;
+        }
+ 
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
     <meta charset="UTF-8">
     <title>Sudoku</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
@@ -11,7 +22,11 @@
         {% for row in board %}
         <div class="sudoku-row">
             {% for cell in row %}
-            <input type="number" class="sudoku-cell" value="{{ cell }}" >
+                {% if cell != None %}
+                <input type="number" class="sudoku-readonly" value="{{ cell }}" max = 9 min = 1  readonly>
+                {% else %}
+                <input type="number" class="sudoku-cell" value="{{ cell }}" max = 9 min = 1  >
+                {% endif %}
             {% endfor %}
         </div>
         {% endfor %}
