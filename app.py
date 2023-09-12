@@ -57,6 +57,14 @@ while True:
     r,c = random.choice(diffPos)
     sudoku_board[r][c] = solved_board[r][c]
 
+print(sudoku_board)
+print(solved_board)
+flat_solved_board = []
+for r in range(9):
+    for c in range(9):
+        if sudoku_board[r][c] == 0:
+            flat_solved_board.append(solved_board[r][c])
+
 @app.route('/')
 def index():
     return render_template('index.html', board=sudoku_board)
@@ -64,7 +72,7 @@ def index():
 @app.route('/check', methods=['POST'])
 def check():
     # Call the Sudoku solver function (implement this)
-    return jsonify({'solved_board': solved_board})
+    return jsonify({'solved_board': flat_solved_board})
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -52,7 +52,11 @@
             .then(data => {
                 const cells = document.querySelectorAll('.sudoku-cell');
                 cells.forEach((cell, index) => {
-                    cell.value = data.solved_board[index];
+                    if (board[index] !== data.solved_board[index] && board[index] !== 0) {
+                    cell.style.color = 'red';
+                } else {
+                    cell.style.color = 'black';
+                }
                 });
     
                 const errors = Array.from(cells).filter((cell, index) => {
