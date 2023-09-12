@@ -72,7 +72,7 @@ def index():
 @app.route('/check', methods=['POST'])
 def check():
     # Call the Sudoku solver function (implement this)
-    return jsonify({'solved_board': flat_solved_board})
+    return jsonify({'solved_board': solved_board})
 
 if __name__ == '__main__':
     app.run(debug=True)
