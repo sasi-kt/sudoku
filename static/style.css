@@ -61,6 +61,12 @@ h1 {
     font-size: 18px;
 }
 
+#refresh-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+}
+
 .error {
     background-color: #ffcccc; /* Light red background for errors */
     color: red; /* Red text for errors */

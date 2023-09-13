@@ -32,8 +32,11 @@
         {% endfor %}
     </div>
     
+    <div class="button-container"></div>
     <button id="check-btn">Check</button>
-
+    <button id="refresh-btn">New puzzle</button>
+    </div>
+    
     <script>
         document.getElementById('check-btn').addEventListener('click', () => {
             const board = [];
@@ -72,6 +75,11 @@
                 }
             });
         });
+        // Refresh button event listener
+        document.getElementById('refresh-btn').addEventListener('click', () => {
+            window.location.href = '/refresh'; // Redirect to the /refresh route to reload the app
+        });
+</script>
     </script>
 
 </body>
